@@ -16,7 +16,7 @@ const Landing = () => {
             to="/login"
             className="btn-dark px-10 py-4 hover:bg-transparent hover:text-gray-900"
           >
-            Login
+            Vote Sekarang!
           </Link>
         </div>
       </div>
