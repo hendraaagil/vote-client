@@ -6,10 +6,10 @@ body {
   margin: 0 auto;
   padding: 0;
   max-width: 1440px;
-  font-family: 'Grandstander', cursive;
+  font-family: 'Open Sans', sans-serif;
   background-color: #cbd5e0;
 }
 
 .btn-dark {
-  @apply bg-gray-900 text-xl text-gray-400 font-medium border-2 border-gray-900 rounded-2xl transition-all duration-300;
+  @apply bg-gray-900 text-xl text-gray-400 font-bold border-2 border-gray-900 rounded-2xl transition-all duration-300;
 }

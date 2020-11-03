@@ -19204,7 +19204,7 @@ body {
   margin: 0 auto;
   padding: 0;
   max-width: 1440px;
-  font-family: 'Grandstander', cursive;
+  font-family: 'Open Sans', sans-serif;
   background-color: #cbd5e0;
 }
 
@@ -19216,7 +19216,7 @@ body {
   --text-opacity: 1;
   color: #cbd5e0;
   color: rgba(203, 213, 224, var(--text-opacity));
-  font-weight: 500;
+  font-weight: 700;
   border-width: 2px;
   --border-opacity: 1;
   border-color: #1a202c;
