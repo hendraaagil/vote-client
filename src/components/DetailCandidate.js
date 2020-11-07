@@ -22,9 +22,21 @@ const DetailCandidate = (props) => {
         <h1 className="text-3xl font-bold">Program Utama :</h1>
         <p className="pl-4 text-lg font-semibold">{candidate.program}</p>
         <h1 className="mt-4 text-2xl font-bold">Visi :</h1>
-        <p className="pl-4 text-lg font-semibold">{candidate.visi}</p>
+        <ul>
+          {candidate.visi.map((v, i) => (
+            <li className="pl-4 text-lg font-semibold" key={i}>
+              {i + 1}. {v}
+            </li>
+          ))}
+        </ul>
         <h1 className="mt-4 text-2xl font-bold">Misi :</h1>
-        <p className="pl-4 text-lg font-semibold">{candidate.misi}</p>
+        <ul>
+          {candidate.misi.map((m, i) => (
+            <li className="pl-4 text-lg font-semibold" key={i}>
+              {i + 1}. {m}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
