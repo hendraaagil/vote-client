@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 import Landing from './components/Landing';
 import Login from './components/Login';
@@ -34,14 +35,36 @@ function App() {
         misi: ['Hebat', 'Menjadikan sekolah tempat tidur'],
       },
     ],
+    data: {
+      author: '',
+      text: '',
+    },
   });
+
+  const getData = () => {
+    axios.get('http://localhost:8000/', { crossdomain: true }).then((res) => {
+      console.log(res.data);
+      setState({
+        ...state,
+        data: {
+          author: res.data.author,
+          text: res.data.text,
+        },
+      });
+    });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <Switch>
       <Route path="/vote/:candidateId" component={DetailCandidate} />
       <Route path="/vote" children={<Home candidates={state.candidates} />} />
       <Route path="/login" component={Login} />
-      <Route path="/" component={Landing} />
+      {/* <Route path="/" component={Landing} /> */}
+      <Route path="/" children={<Landing data={state.data} />} />
     </Switch>
   );
 }
