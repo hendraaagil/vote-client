@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 
 import Welcome from './layout/Welcome';
 
-const Landing = (props) => {
-  console.log(props);
+const Landing = () => {
   return (
     <div className="p-20 flex text-gray-900">
       <Welcome />
@@ -14,8 +13,6 @@ const Landing = (props) => {
         >
           Vote Sekarang!
         </Link>
-        <h2>{props.data.text}</h2>
-        <p>{props.data.author}</p>
       </div>
     </div>
   );
