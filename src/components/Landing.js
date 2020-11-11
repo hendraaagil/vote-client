@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Welcome from './layout/Welcome';
+import Welcome from './layouts/Welcome';
 
 const Landing = () => {
   return (

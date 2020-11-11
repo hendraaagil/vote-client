@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import axios from '../axios';
 
-import Welcome from './layout/Welcome';
+import Welcome from '../components/layouts/Welcome';
 
 const Login = (props) => {
   const [state, setState] = useState({
@@ -18,11 +19,15 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (state.username === '' && state.password === '') {
-      props.history.push('/vote');
-    } else {
-      alert('Username atau Password salah!');
-    }
+    axios
+      .post('/login', { username: state.username, password: state.password })
+      .then((res) => {
+        console.log(res);
+        if (res.data.user) {
+          props.history.push('/vote');
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

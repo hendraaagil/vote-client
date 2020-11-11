@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import axios from 'axios';
 
-import Landing from './components/Landing';
-import Login from './components/Login';
-import Home from './components/Home';
-import DetailCandidate from './components/DetailCandidate';
+import Landing from '../components/Landing';
+import Login from './Login';
+import Home from '../components/Home';
+import DetailCandidate from '../components/DetailCandidate';
 
 function App() {
   const [candidates, setCandidates] = useState([
@@ -34,19 +33,6 @@ function App() {
       misi: ['Hebat', 'Menjadikan sekolah tempat tidur'],
     },
   ]);
-
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   const getData = () => {
-  //     axios
-  //       .get('http://localhost:8000/')
-  //       .then((res) => {
-  //         setData(res.data);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
-  //   getData();
-  // }, []);
 
   return (
     <Switch>

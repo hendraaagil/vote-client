@@ -1,4 +1,4 @@
-import Card from './layout/Card';
+import Card from './layouts/Card';
 
 const Home = (props) => {
   return (
