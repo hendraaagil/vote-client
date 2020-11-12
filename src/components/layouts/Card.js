@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 import candidateImg from '../../assets/images/candidate.jpg';
 
-const Card = (props) => {
+const Card = ({ candidates }) => {
   return (
     <div className="flex">
-      {props.candidates.map((candidate) => {
+      {candidates.map((candidate) => {
         return (
           <div
             className="mx-4 pb-5 rounded overflow-hidden shadow-lg"

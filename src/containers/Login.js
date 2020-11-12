@@ -7,6 +7,10 @@ const Login = (props) => {
   const [state, setState] = useState({
     username: '',
     password: '',
+    errors: {
+      username: '',
+      password: '',
+    },
   });
 
   const handleChange = (e) => {
@@ -27,7 +31,13 @@ const Login = (props) => {
           props.history.push('/vote');
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setState({
+          ...state,
+          errors: err.response.data.errors,
+        });
+        console.log(err.response.data);
+      });
   };
 
   return (
@@ -66,6 +76,16 @@ const Login = (props) => {
           >
             Login
           </button>
+          {state.errors.username.length > 0 && (
+            <span className="mt-2 text-red-600 font-semibold">
+              {state.errors.username}
+            </span>
+          )}
+          {state.errors.password.length > 0 && (
+            <span className="mt-2 text-red-600 font-semibold">
+              {state.errors.password}
+            </span>
+          )}
         </form>
       </div>
     </div>
