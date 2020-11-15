@@ -1,4 +1,5 @@
 import Card from './layouts/Card';
+import LogoutButton from './layouts/LogoutButton';
 
 const Home = ({ candidates }) => {
   return (
@@ -7,6 +8,9 @@ const Home = ({ candidates }) => {
         Tentukan Pilihanmu!
       </h1>
       <Card candidates={candidates} />
+      <div className="flex justify-center mt-10">
+        <LogoutButton />
+      </div>
     </div>
   );
 };

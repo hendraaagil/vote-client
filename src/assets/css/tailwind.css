@@ -11,5 +11,13 @@ body {
 }
 
 .btn-dark {
-  @apply bg-gray-900 text-xl text-gray-400 font-bold border-2 border-gray-900 rounded-2xl transition-all duration-300;
+  @apply py-2 px-8 bg-gray-900 text-xl text-gray-400 font-bold border-2 border-gray-900 rounded-2xl transition-all duration-300;
+}
+
+.btn-red {
+  @apply py-2 px-8 bg-red-700 text-xl text-gray-400 font-bold border-2 border-red-700 rounded-2xl transition-all duration-300;
+}
+
+.btn-green {
+  @apply py-2 px-8 bg-green-700 text-xl text-gray-400 font-bold border-2 border-green-700 rounded-2xl transition-all duration-300;
 }

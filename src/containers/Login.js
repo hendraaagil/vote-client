@@ -26,7 +26,7 @@ const Login = (props) => {
     axios
       .post('/login', { username: state.username, password: state.password })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.user) {
           props.history.push('/vote');
         }
@@ -41,7 +41,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="p-20 flex text-gray-900">
+    <div className="p-16 flex text-gray-900">
       <Welcome />
       <div className="flex flex-col justify-center items-center w-1/2">
         <h2 className="mb-5 font-semibold text-2xl text-center">
@@ -71,18 +71,18 @@ const Login = (props) => {
             />
           </div>
           <button
-            className="btn-dark py-2 hover:bg-transparent hover:text-gray-900"
+            className="btn-dark hover:bg-transparent hover:text-gray-900"
             onClick={handleSubmit}
           >
             Login
           </button>
           {state.errors.username.length > 0 && (
-            <span className="mt-2 text-red-600 font-semibold">
+            <span className="mt-2 text-red-600 text-xs font-semibold text-center">
               {state.errors.username}
             </span>
           )}
           {state.errors.password.length > 0 && (
-            <span className="mt-2 text-red-600 font-semibold">
+            <span className="mt-2 text-red-600 text-xs font-semibold text-center">
               {state.errors.password}
             </span>
           )}
