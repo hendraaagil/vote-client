@@ -8,7 +8,11 @@ const Welcome = () => {
           Selamat Datang di E-Voting
         </h1>
       </div>
-      <img src={vote} alt="Vote Illustration" className="p-5 w-3/4" />
+      <img
+        src={vote}
+        alt="Vote Illustration"
+        className="p-5 w-3/4 xl:max-w-3xl"
+      />
     </div>
   );
 };

@@ -3,11 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import axios from '../axios';
 
 import Landing from '../components/Landing';
-import Login from './Login';
-import Home from '../components/Home';
-import DetailCandidate from '../components/DetailCandidate';
+import Login from '../components/auth/Login';
+import Home from '../components/candidates/Home';
+import DetailCandidate from '../components/candidates/DetailCandidate';
 
-function App() {
+const App = () => {
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
@@ -25,6 +25,6 @@ function App() {
       <Route path="/" component={Landing} />
     </Switch>
   );
-}
+};
 
 export default App;

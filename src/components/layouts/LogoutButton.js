@@ -1,14 +1,19 @@
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const LogoutButton = () => {
+const LogoutButton = (props) => {
+  const logoutClick = () => {
+    console.log(props);
+    props.history.push('/login');
+  };
+
   return (
-    <Link
-      to="/login"
+    <button
       className="btn-red hover:bg-transparent hover:text-red-700"
+      onClick={logoutClick}
     >
       Logout
-    </Link>
+    </button>
   );
 };
 
-export default LogoutButton;
+export default withRouter(LogoutButton);

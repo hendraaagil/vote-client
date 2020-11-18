@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import axios from '../axios';
+import { useState, useContext } from 'react';
+import axios from '../../axios';
 
-import Welcome from '../components/layouts/Welcome';
+import Welcome from '../layouts/Welcome';
 
 const Login = (props) => {
   const [state, setState] = useState({
@@ -26,9 +26,8 @@ const Login = (props) => {
     axios
       .post('/login', { username: state.username, password: state.password })
       .then((res) => {
-        // console.log(res);
         if (res.data.user) {
-          props.history.push('/vote');
+          props.history.push(`/vote?${res.data.user}`);
         }
       })
       .catch((err) => {
