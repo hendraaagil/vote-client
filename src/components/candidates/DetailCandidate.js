@@ -1,8 +1,14 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const DetailCandidate = (props) => {
+  const authContext = useContext(AuthContext);
   const candidate = props.location.candidate;
   console.log(candidate);
+
+  const backHandler = () => {
+    props.history.push(`/vote?${authContext.id}`);
+  };
 
   return (
     <div className="grid grid-cols-2 gap-4 p-10">
@@ -15,9 +21,9 @@ const DetailCandidate = (props) => {
         <h2 className="mt-4 text-2xl font-bold">{candidate.leader}</h2>
         <h2 className="mt-4 mb-10 text-2xl font-bold">{candidate.coLeader}</h2>
         <div className="flex justify-between">
-          <Link to="/vote" className="btn-dark">
+          <button className="btn-dark" onClick={backHandler}>
             Kembali
-          </Link>
+          </button>
           <button className="btn-green">Pilih</button>
         </div>
       </div>

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from '../../axios';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import Card from '../layouts/Card';
 import LogoutButton from '../layouts/LogoutButton';
@@ -9,16 +10,18 @@ const Home = (props) => {
   console.log(props);
   const [name, setName] = useState('');
   const id = props.location.search.slice(1);
+  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     axios
       .get(`/users/${id}`)
       .then((response) => {
-        const { fullName } = response.data;
+        const { _id, fullName } = response.data;
         setName(fullName);
+        authContext.login(_id);
       })
       .catch((error) => console.log(error));
-  }, [id]);
+  }, [id, authContext]);
 
   return (
     <div className="p-8 text-gray-900">

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import AuthContextProvider from './contexts/AuthContext';
 import './styles.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
