@@ -25,7 +25,7 @@ const Card = ({ candidates }) => {
                   pathname: `/vote/${candidate.number}`,
                   candidate,
                 }}
-                className="btn-dark py-2 px-8 hover:bg-transparent hover:text-gray-900"
+                className="btn-dark"
               >
                 Detail
               </Link>

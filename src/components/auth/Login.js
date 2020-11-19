@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import axios from '../../axios';
 
 import Welcome from '../layouts/Welcome';
@@ -69,10 +69,7 @@ const Login = (props) => {
               value={state.password}
             />
           </div>
-          <button
-            className="btn-dark hover:bg-transparent hover:text-gray-900"
-            onClick={handleSubmit}
-          >
+          <button className="btn-dark" onClick={handleSubmit}>
             Login
           </button>
           {state.errors.username.length > 0 && (

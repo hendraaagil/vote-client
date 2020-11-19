@@ -7,10 +7,7 @@ const LogoutButton = (props) => {
   };
 
   return (
-    <button
-      className="btn-red hover:bg-transparent hover:text-red-700"
-      onClick={logoutClick}
-    >
+    <button className="btn-red" onClick={logoutClick}>
       Logout
     </button>
   );

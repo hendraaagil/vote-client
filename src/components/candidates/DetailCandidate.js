@@ -15,15 +15,10 @@ const DetailCandidate = (props) => {
         <h2 className="mt-4 text-2xl font-bold">{candidate.leader}</h2>
         <h2 className="mt-4 mb-10 text-2xl font-bold">{candidate.coLeader}</h2>
         <div className="flex justify-between">
-          <Link
-            to="/vote"
-            className="btn-dark hover:bg-transparent hover:text-gray-900"
-          >
+          <Link to="/vote" className="btn-dark">
             Kembali
           </Link>
-          <button className="btn-green hover:bg-transparent hover:text-green-700">
-            Pilih
-          </button>
+          <button className="btn-green">Pilih</button>
         </div>
       </div>
       <div className="py-2 px-4">
