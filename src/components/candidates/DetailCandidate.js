@@ -5,12 +5,12 @@ import { AuthContext } from '../../contexts/AuthContext';
 const DetailCandidate = (props) => {
   const authContext = useContext(AuthContext);
   const candidate = props.location.candidate;
-  const { username, fullName } = authContext.user;
+  const { _id, username, fullName } = authContext.user;
   console.log(candidate);
   console.log(authContext.user);
 
   const backHandler = () => {
-    props.history.push(`/vote?${authContext.user._id}`);
+    props.history.push('/vote');
   };
 
   const chooseHandler = () => {
@@ -21,6 +21,10 @@ const DetailCandidate = (props) => {
         username,
         fullName,
       })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+    axios
+      .put(`/users/${_id}`)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from '../../axios';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import Welcome from '../layouts/Welcome';
 
@@ -12,6 +13,7 @@ const Login = (props) => {
       password: '',
     },
   });
+  const authContext = useContext(AuthContext);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -27,7 +29,8 @@ const Login = (props) => {
       .post('/login', { username: state.username, password: state.password })
       .then((res) => {
         if (res.data.user) {
-          props.history.push(`/vote?${res.data.user}`);
+          props.history.push('/vote');
+          authContext.getId(res.data.user);
         }
       })
       .catch((err) => {

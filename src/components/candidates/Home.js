@@ -9,9 +9,9 @@ import LogoutButton from '../layouts/LogoutButton';
 
 const Home = (props) => {
   console.log(props);
-  const id = props.location.search.slice(1);
   const authContext = useContext(AuthContext);
   const candidateContext = useContext(CandidateContext);
+  const id = authContext.id;
 
   useEffect(() => {
     axios
