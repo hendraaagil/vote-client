@@ -29167,10 +29167,9 @@ body {
 }
 
 .btn-dark {
-  transition-property: all;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  transition-duration: 300ms;
 }
 
 .btn-red {
@@ -29204,10 +29203,9 @@ body {
 }
 
 .btn-red {
-  transition-property: all;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  transition-duration: 300ms;
 }
 
 .btn-green {
@@ -29241,10 +29239,9 @@ body {
 }
 
 .btn-green {
-  transition-property: all;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  transition-duration: 300ms;
 }
 
 @media (min-width: 640px) {

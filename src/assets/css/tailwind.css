@@ -11,13 +11,13 @@ body {
 }
 
 .btn-dark {
-  @apply py-2 px-8 bg-gray-900 text-xl text-gray-300 font-bold border-2 border-gray-900 rounded-2xl transition-all duration-300 hover:bg-transparent hover:text-gray-900;
+  @apply py-2 px-8 bg-gray-900 text-xl text-gray-300 font-bold border-2 border-gray-900 rounded-2xl transition hover:bg-transparent hover:text-gray-900;
 }
 
 .btn-red {
-  @apply py-2 px-8 bg-red-700 text-xl text-gray-300 font-bold border-2 border-red-700 rounded-2xl transition-all duration-300 hover:bg-transparent hover:text-red-700;
+  @apply py-2 px-8 bg-red-700 text-xl text-gray-300 font-bold border-2 border-red-700 rounded-2xl transition hover:bg-transparent hover:text-red-700;
 }
 
 .btn-green {
-  @apply py-2 px-8 bg-green-700 text-xl text-gray-300 font-bold border-2 border-green-700 rounded-2xl transition-all duration-300 hover:bg-transparent hover:text-green-700;
+  @apply py-2 px-8 bg-green-700 text-xl text-gray-300 font-bold border-2 border-green-700 rounded-2xl transition hover:bg-transparent hover:text-green-700;
 }

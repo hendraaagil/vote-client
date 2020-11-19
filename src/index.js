@@ -2,13 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import AuthContextProvider from './contexts/AuthContext';
+import CandidateContextProvider from './contexts/CandidateContext';
 import './styles.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 
 const app = (
   <BrowserRouter>
-    <App />
+    <AuthContextProvider>
+      <CandidateContextProvider>
+        <App />
+      </CandidateContextProvider>
+    </AuthContextProvider>
   </BrowserRouter>
 );
 

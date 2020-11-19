@@ -1,13 +1,28 @@
 import { useContext } from 'react';
+import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const DetailCandidate = (props) => {
   const authContext = useContext(AuthContext);
   const candidate = props.location.candidate;
+  const { username, fullName } = authContext.user;
   console.log(candidate);
+  console.log(authContext.user);
 
   const backHandler = () => {
-    props.history.push(`/vote?${authContext.id}`);
+    props.history.push(`/vote?${authContext.user._id}`);
+  };
+
+  const chooseHandler = () => {
+    console.log(candidate.number, username, fullName);
+    axios
+      .post('/send-result', {
+        candidateNumber: candidate.number,
+        username,
+        fullName,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -24,7 +39,9 @@ const DetailCandidate = (props) => {
           <button className="btn-dark" onClick={backHandler}>
             Kembali
           </button>
-          <button className="btn-green">Pilih</button>
+          <button className="btn-green" onClick={chooseHandler}>
+            Pilih
+          </button>
         </div>
       </div>
       <div className="py-2 px-4">
