@@ -1,10 +1,11 @@
 import { useEffect, useContext } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 import { CandidateContext } from '../../contexts/CandidateContext';
 
 import Card from '../layouts/Card';
+import LoginButton from '../layouts/LoginButton';
 import LogoutButton from '../layouts/LogoutButton';
 
 const Home = (props) => {
@@ -42,13 +43,7 @@ const Home = (props) => {
       </h1>
       <Card candidates={candidates} />
       <div className="flex justify-center mt-10">
-        {id ? (
-          <LogoutButton />
-        ) : (
-          <Link to="/login" className="btn-dark">
-            Login
-          </Link>
-        )}
+        {id ? <LogoutButton /> : <LoginButton />}
       </div>
     </div>
   );

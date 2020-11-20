@@ -30,6 +30,7 @@ const DetailCandidate = (props) => {
       .put(`/users/${_id}`)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+    props.history.push('/voted');
   };
 
   return (
