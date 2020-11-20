@@ -9,15 +9,14 @@ import LogoutButton from '../layouts/LogoutButton';
 
 const Home = (props) => {
   console.log(props);
-  const authContext = useContext(AuthContext);
-  const candidateContext = useContext(CandidateContext);
-  const id = authContext.id;
+  const { id, getUser, user } = useContext(AuthContext);
+  const { getCandidates, candidates } = useContext(CandidateContext);
 
   useEffect(() => {
     axios
       .get(`/users/${id}`)
       .then((response) => {
-        authContext.getUser(response.data);
+        getUser(response.data);
       })
       .catch((error) => console.log(error));
     // eslint-disable-next-line
@@ -27,7 +26,7 @@ const Home = (props) => {
     axios
       .get('/candidates')
       .then((response) => {
-        candidateContext.getCandidates(response.data);
+        getCandidates(response.data);
       })
       .catch((error) => console.log(error));
     // eslint-disable-next-line
@@ -36,12 +35,12 @@ const Home = (props) => {
   return (
     <div className="p-8 text-gray-900">
       <h1 className="mb-2 py-4 font-bold text-2xl text-center shadow">
-        Halo, Selamat Datang {authContext.user.fullName} !
+        Halo, Selamat Datang {user.fullName} !
       </h1>
       <h1 className="mt-6 mb-10 font-bold text-4xl text-center">
         Tentukan Pilihanmu!
       </h1>
-      <Card candidates={candidateContext.candidates} />
+      <Card candidates={candidates} />
       <div className="flex justify-center mt-10">
         {id ? (
           <LogoutButton />

@@ -6,8 +6,9 @@ import LogoutButton from '../layouts/LogoutButton';
 
 const DetailCandidate = (props) => {
   const authContext = useContext(AuthContext);
-  const candidate = props.location.candidate;
   const { _id, username, fullName, voted } = authContext.user;
+
+  const candidate = props.location.candidate;
   console.log(candidate);
   console.log(authContext.user);
 
