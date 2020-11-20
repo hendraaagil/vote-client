@@ -13,7 +13,7 @@ const Login = (props) => {
       password: '',
     },
   });
-  const authContext = useContext(AuthContext);
+  const { getId } = useContext(AuthContext);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -30,7 +30,7 @@ const Login = (props) => {
       .then((res) => {
         if (res.data.user) {
           props.history.push('/vote');
-          authContext.getId(res.data.user);
+          getId(res.data.user);
         }
       })
       .catch((err) => {

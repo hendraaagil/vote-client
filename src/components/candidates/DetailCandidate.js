@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 
+import LogoutButton from '../layouts/LogoutButton';
+
 const DetailCandidate = (props) => {
   const authContext = useContext(AuthContext);
   const candidate = props.location.candidate;
-  const { _id, username, fullName } = authContext.user;
+  const { _id, username, fullName, voted } = authContext.user;
   console.log(candidate);
   console.log(authContext.user);
 
@@ -43,9 +45,13 @@ const DetailCandidate = (props) => {
           <button className="btn-dark" onClick={backHandler}>
             Kembali
           </button>
-          <button className="btn-green" onClick={chooseHandler}>
-            Pilih
-          </button>
+          {voted ? (
+            <LogoutButton />
+          ) : (
+            <button className="btn-green" onClick={chooseHandler}>
+              Pilih
+            </button>
+          )}
         </div>
       </div>
       <div className="py-2 px-4">
