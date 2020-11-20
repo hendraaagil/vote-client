@@ -41,9 +41,10 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^3.0.0",
     "autoprefixer": "^10.0.2",
-    "postcss": "^8.1.7",
-    "postcss-cli": "^8.2.0",
+    "postcss": "^8.1.8",
+    "postcss-cli": "^8.3.0",
     "tailwindcss": "^2.0.1"
   }
 }
