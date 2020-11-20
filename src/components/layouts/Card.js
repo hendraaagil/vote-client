@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Card = ({ candidates }) => {
+  const { id } = useContext(AuthContext);
+
   return (
     <div className="flex">
       {candidates.map((candidate) => {
@@ -20,15 +24,21 @@ const Card = ({ candidates }) => {
             <div className="px-6 py-2 text-center">
               <h2 className="font-bold text-xl mb-2">{candidate.coLeader}</h2>
               <p className="text-gray-700 text-base mb-8">Wakil Ketua</p>
-              <Link
-                to={{
-                  pathname: `/vote/${candidate.number}`,
-                  candidate,
-                }}
-                className="btn-dark"
-              >
-                Detail
-              </Link>
+              {id ? (
+                <Link
+                  to={{
+                    pathname: `/vote/${candidate.number}`,
+                    candidate,
+                  }}
+                  className="btn-dark"
+                >
+                  Detail
+                </Link>
+              ) : (
+                <h2 className="font-bold text-xl mb-2">
+                  Silahkan login terlebih dahulu !
+                </h2>
+              )}
             </div>
           </div>
         );

@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 import { CandidateContext } from '../../contexts/CandidateContext';
@@ -43,7 +43,13 @@ const Home = (props) => {
       </h1>
       <Card candidates={candidateContext.candidates} />
       <div className="flex justify-center mt-10">
-        <LogoutButton />
+        {id ? (
+          <LogoutButton />
+        ) : (
+          <Link to="/login" className="btn-dark">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
