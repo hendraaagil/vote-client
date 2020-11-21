@@ -10,18 +10,8 @@ import LogoutButton from '../layouts/LogoutButton';
 
 const Home = (props) => {
   console.log(props);
-  const { id, getUser, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { getCandidates, candidates } = useContext(CandidateContext);
-
-  useEffect(() => {
-    axios
-      .get(`/users/${id}`)
-      .then((response) => {
-        getUser(response.data);
-      })
-      .catch((error) => console.log(error));
-    // eslint-disable-next-line
-  }, [id]);
 
   useEffect(() => {
     axios
@@ -35,15 +25,21 @@ const Home = (props) => {
 
   return (
     <div className="p-8 text-gray-900">
-      <h1 className="mb-2 py-4 font-bold text-2xl text-center shadow">
-        Halo, Selamat Datang {user.fullName} !
-      </h1>
+      {user ? (
+        <h1 className="mb-2 py-4 font-bold text-2xl text-center shadow">
+          Halo, Selamat Datang {user.fullName} !
+        </h1>
+      ) : (
+        <h1 className="mb-2 py-4 font-bold text-2xl text-center shadow">
+          Halo, Selamat Datang !
+        </h1>
+      )}
       <h1 className="mt-6 mb-10 font-bold text-4xl text-center">
         Tentukan Pilihanmu!
       </h1>
       <Card candidates={candidates} />
       <div className="flex justify-center mt-10">
-        {id ? <LogoutButton /> : <LoginButton />}
+        {user ? <LogoutButton /> : <LoginButton />}
       </div>
     </div>
   );

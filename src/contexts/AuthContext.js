@@ -1,29 +1,34 @@
 import { useState, useEffect, createContext } from 'react';
+import axios from '../axios';
 
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [id, setId] = useState('');
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    setId(JSON.parse(localStorage.getItem('id')));
+    setUser(JSON.parse(localStorage.getItem('user')));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('id', JSON.stringify(id));
-  }, [id]);
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
 
-  const getId = (id) => {
-    setId(id);
+  const getUser = (id) => {
+    axios
+      .get(`/users/${id}`)
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => console.log(error));
   };
 
-  const getUser = (user) => {
-    setUser(user);
+  const clearUser = () => {
+    localStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{ getId, id, getUser, user }}>
+    <AuthContext.Provider value={{ getUser, user, clearUser }}>
       {children}
     </AuthContext.Provider>
   );

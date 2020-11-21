@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Card = ({ candidates }) => {
-  const { id } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <div className="flex">
@@ -24,7 +24,7 @@ const Card = ({ candidates }) => {
             <div className="px-6 py-2 text-center">
               <h2 className="font-bold text-xl mb-2">{candidate.coLeader}</h2>
               <p className="text-gray-700 text-base mb-8">Wakil Ketua</p>
-              {id ? (
+              {user ? (
                 <Link
                   to={{
                     pathname: `/vote/${candidate.number}`,

@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import Welcome from '../layouts/Welcome';
 
 const Login = (props) => {
+  const { getUser } = useContext(AuthContext);
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -13,7 +14,6 @@ const Login = (props) => {
       password: '',
     },
   });
-  const { getId } = useContext(AuthContext);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -27,18 +27,18 @@ const Login = (props) => {
     e.preventDefault();
     axios
       .post('/login', { username: state.username, password: state.password })
-      .then((res) => {
-        if (res.data.user) {
+      .then((response) => {
+        if (response.data.user) {
           props.history.push('/vote');
-          getId(res.data.user);
+          getUser(response.data.user);
         }
       })
-      .catch((err) => {
+      .catch((error) => {
+        console.log(error.response);
         setState({
           ...state,
-          errors: err.response.data.errors,
+          errors: error.response.data.errors,
         });
-        console.log(err.response.data);
       });
   };
 

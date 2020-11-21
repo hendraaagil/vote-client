@@ -7,7 +7,7 @@ import LogoutButton from './layouts/LogoutButton';
 
 const Voted = (props) => {
   console.log(props);
-  const { id } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   let content = (
     <div className="flex flex-col items-center p-8">
@@ -19,7 +19,7 @@ const Voted = (props) => {
     </div>
   );
 
-  if (!id) {
+  if (!user) {
     content = (
       <div className="flex flex-col items-center p-8">
         <h1 className="mb-12 font-bold text-4xl text-center">
