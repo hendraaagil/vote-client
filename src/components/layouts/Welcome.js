@@ -4,7 +4,7 @@ const Welcome = () => {
   return (
     <div className="flex flex-wrap justify-center p-4 w-1/2">
       <div>
-        <h1 className="mb-12 font-bold text-4xl text-center">
+        <h1 className="mb-12 font-bold text-4xl text-blueGray-800 text-center">
           Selamat Datang di E-Voting
         </h1>
       </div>

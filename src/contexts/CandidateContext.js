@@ -1,16 +1,30 @@
-import { useState, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 
 export const CandidateContext = createContext();
 
 const CandidateContextProvider = ({ children }) => {
-  const [candidates, setCandidates] = useState([]);
+  const [candidate, setCandidate] = useState({});
 
-  const getCandidates = (candidates) => {
-    setCandidates(candidates);
+  useEffect(() => {
+    setCandidate(JSON.parse(localStorage.getItem('candidate')));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('candidate', JSON.stringify(candidate));
+  }, [candidate]);
+
+  const getCandidate = (data) => {
+    setCandidate(data);
+  };
+
+  const clearCandidate = () => {
+    localStorage.removeItem('candidate');
   };
 
   return (
-    <CandidateContext.Provider value={{ getCandidates, candidates }}>
+    <CandidateContext.Provider
+      value={{ getCandidate, candidate, clearCandidate }}
+    >
       {children}
     </CandidateContext.Provider>
   );

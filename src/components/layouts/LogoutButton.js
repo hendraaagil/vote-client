@@ -1,13 +1,16 @@
 import { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import { CandidateContext } from '../../contexts/CandidateContext';
 
 const LogoutButton = (props) => {
   const { clearUser } = useContext(AuthContext);
+  const { clearCandidate } = useContext(CandidateContext);
 
   const logoutClick = () => {
     console.log(props);
     clearUser();
+    clearCandidate();
     props.history.push('/login');
   };
 

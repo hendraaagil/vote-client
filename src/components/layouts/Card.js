@@ -1,13 +1,27 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
+import { CandidateContext } from '../../contexts/CandidateContext';
 
-const Card = ({ candidates }) => {
+const Card = (props) => {
   const { user } = useContext(AuthContext);
+  const { getCandidate } = useContext(CandidateContext);
+  console.log(props);
+
+  const detailHandler = (candidateId, number) => {
+    axios
+      .get(`/candidates/${candidateId}`)
+      .then((response) => {
+        getCandidate(response.data);
+        props.history.replace(`/vote/${number}`);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
-    <div className="flex">
-      {candidates.map((candidate) => {
+    <div className="flex text-blueGray-800">
+      {props.candidates.map((candidate) => {
         return (
           <div
             className="mx-4 pb-5 rounded overflow-hidden shadow-lg"
@@ -19,21 +33,18 @@ const Card = ({ candidates }) => {
             </h1>
             <div className="px-6 py-4 text-center">
               <h2 className="font-bold text-xl mb-2">{candidate.leader}</h2>
-              <p className="text-gray-700 text-base">Ketua</p>
+              <p className="text-blueGray-800 text-base">Ketua</p>
             </div>
             <div className="px-6 py-2 text-center">
               <h2 className="font-bold text-xl mb-2">{candidate.coLeader}</h2>
-              <p className="text-gray-700 text-base mb-8">Wakil Ketua</p>
+              <p className="text-blueGray-800 text-base mb-8">Wakil Ketua</p>
               {user ? (
-                <Link
-                  to={{
-                    pathname: `/vote/${candidate.number}`,
-                    candidate,
-                  }}
+                <button
                   className="btn-dark"
+                  onClick={() => detailHandler(candidate._id, candidate.number)}
                 >
                   Detail
-                </Link>
+                </button>
               ) : (
                 <h2 className="font-bold text-xl mb-2">
                   Silahkan login terlebih dahulu !
@@ -47,4 +58,4 @@ const Card = ({ candidates }) => {
   );
 };
 
-export default Card;
+export default withRouter(Card);

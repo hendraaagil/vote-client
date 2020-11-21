@@ -1,14 +1,15 @@
 import { useContext } from 'react';
 import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
+import { CandidateContext } from '../../contexts/CandidateContext';
 
 import LogoutButton from '../layouts/LogoutButton';
 
 const DetailCandidate = (props) => {
   const authContext = useContext(AuthContext);
   const { _id, username, fullName, voted } = authContext.user;
+  const { candidate } = useContext(CandidateContext);
 
-  const candidate = props.location.candidate;
   console.log(candidate);
   console.log(authContext.user);
 
@@ -34,7 +35,7 @@ const DetailCandidate = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-10">
+    <div className="grid grid-cols-2 gap-4 p-10 text-blueGray-800">
       <div className="col-span-1">
         <img
           className="w-full rounded shadow-lg"

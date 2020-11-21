@@ -43,7 +43,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="p-16 flex text-gray-900">
+    <div className="p-16 flex text-blueGray-800">
       <Welcome />
       <div className="flex flex-col justify-center items-center w-1/2">
         <h2 className="mb-5 font-semibold text-2xl text-center">
@@ -52,7 +52,7 @@ const Login = (props) => {
         <form className="flex flex-col">
           <div className="mb-4">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-blueGray-800 leading-tight focus:outline-none focus:ring"
               id="username"
               name="username"
               type="text"
@@ -63,7 +63,7 @@ const Login = (props) => {
           </div>
           <div className="mb-6">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-blueGray-800 leading-tight focus:outline-none focus:ring"
               id="password"
               name="password"
               type="password"
