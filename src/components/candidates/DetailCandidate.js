@@ -6,12 +6,12 @@ import { CandidateContext } from '../../contexts/CandidateContext';
 import LogoutButton from '../layouts/LogoutButton';
 
 const DetailCandidate = (props) => {
-  const authContext = useContext(AuthContext);
-  const { _id, username, fullName, voted } = authContext.user;
+  const { user } = useContext(AuthContext);
+  const { _id, username, fullName, voted } = user;
   const { candidate } = useContext(CandidateContext);
 
   console.log(candidate);
-  console.log(authContext.user);
+  console.log(user);
 
   const backHandler = () => {
     props.history.push('/vote');
@@ -62,19 +62,21 @@ const DetailCandidate = (props) => {
         <p className="pl-4 text-lg font-semibold">{candidate.mainProgram}</p>
         <h1 className="mt-4 text-2xl font-bold">Visi :</h1>
         <ul>
-          {candidate.vision.map((v, i) => (
-            <li className="pl-4 text-lg font-semibold" key={i}>
-              {i + 1}. {v}
-            </li>
-          ))}
+          {candidate.vision &&
+            candidate.vision.map((v, i) => (
+              <li className="pl-4 text-lg font-semibold" key={i}>
+                {i + 1}. {v}
+              </li>
+            ))}
         </ul>
         <h1 className="mt-4 text-2xl font-bold">Misi :</h1>
         <ul>
-          {candidate.mission.map((m, i) => (
-            <li className="pl-4 text-lg font-semibold" key={i}>
-              {i + 1}. {m}
-            </li>
-          ))}
+          {candidate.mission &&
+            candidate.mission.map((m, i) => (
+              <li className="pl-4 text-lg font-semibold" key={i}>
+                {i + 1}. {m}
+              </li>
+            ))}
         </ul>
       </div>
     </div>
