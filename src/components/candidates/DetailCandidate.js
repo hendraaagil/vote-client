@@ -20,7 +20,7 @@ const DetailCandidate = (props) => {
   const chooseHandler = () => {
     console.log(candidate.number, username, fullName);
     axios
-      .post('/send-result', {
+      .post('/result', {
         candidateNumber: candidate.number,
         username,
         fullName,
