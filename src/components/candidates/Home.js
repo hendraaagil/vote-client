@@ -23,7 +23,7 @@ const Home = (props) => {
   }, []);
 
   return (
-    <div className="p-8 text-blueGray-800">
+    <div className="pt-8 pb-4 px-8 text-blueGray-800">
       {user ? (
         <h1 className="mb-2 py-4 font-bold text-2xl text-center shadow">
           Halo, Selamat Datang {user.fullName} !

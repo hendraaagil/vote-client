@@ -10,7 +10,7 @@ const Voted = (props) => {
   const { user } = useContext(AuthContext);
 
   let content = (
-    <div className="flex flex-col items-center text-blueGray-800 p-8">
+    <div className="flex flex-col items-center text-blueGray-800 pt-8 pb-2 px-8">
       <h1 className="mb-12 font-bold text-4xl text-center">
         Terima kasih telah memilih 🤩
       </h1>

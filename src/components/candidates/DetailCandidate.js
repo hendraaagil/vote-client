@@ -35,7 +35,7 @@ const DetailCandidate = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-10 text-blueGray-800">
+    <div className="grid grid-cols-2 gap-4 pt-10 pb-6 px-10 text-blueGray-800">
       <div className="col-span-1">
         <img
           className="w-full rounded shadow-lg"
