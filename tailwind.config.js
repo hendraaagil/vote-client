@@ -9,6 +9,9 @@ module.exports = {
         blueGray: colors.blueGray,
         emerald: colors.emerald,
       },
+      screens: {
+        xs: '320px',
+      },
     },
   },
   variants: {

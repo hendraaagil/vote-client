@@ -20,11 +20,11 @@ const Card = (props) => {
   };
 
   return (
-    <div className="flex text-blueGray-800">
+    <div className="flex flex-col gap-4 sm:flex-row text-blueGray-800">
       {props.candidates.map((candidate) => {
         return (
           <div
-            className="mx-4 pb-5 rounded overflow-hidden shadow-lg"
+            className="mx-0 sm:mx-4 pb-5 rounded overflow-hidden shadow-lg"
             key={candidate._id}
           >
             <img className="w-full" src={candidate.photoLink} alt="Candidate" />
@@ -46,7 +46,7 @@ const Card = (props) => {
                   Detail
                 </button>
               ) : (
-                <h2 className="font-bold text-xl mb-2">
+                <h2 className="font-bold text-lg sm:text-xl mb-2">
                   Silahkan login terlebih dahulu !
                 </h2>
               )}

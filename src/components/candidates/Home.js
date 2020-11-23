@@ -23,17 +23,13 @@ const Home = (props) => {
   }, []);
 
   return (
-    <div className="pt-8 pb-4 px-8 text-blueGray-800">
-      {user ? (
-        <h1 className="mb-2 py-4 font-bold text-2xl text-center shadow">
-          Halo, Selamat Datang {user.fullName} !
-        </h1>
-      ) : (
-        <h1 className="mb-2 py-4 font-bold text-2xl text-center shadow">
-          Halo, Selamat Datang !
-        </h1>
-      )}
-      <h1 className="mt-6 mb-10 font-bold text-4xl text-center">
+    <div className="pt-4 pb-2 px-4 sm:pt-8 sm:pb-4 sm:px-8 text-blueGray-800">
+      <h1 className="mb-2 py-4 px-2 font-bold text-lg sm:text-2xl text-center shadow">
+        {user
+          ? `Halo, Selamat Datang ${user.fullName} !`
+          : 'Halo, Selamat Datang !'}
+      </h1>
+      <h1 className="my-6 font-bold text-2xl sm:text-4xl text-center">
         Tentukan Pilihanmu !
       </h1>
       <Card candidates={candidates} />
