@@ -8,7 +8,6 @@ const LogoutButton = (props) => {
   const { clearCandidate } = useContext(CandidateContext);
 
   const logoutClick = () => {
-    console.log(props);
     clearUser();
     clearCandidate();
     props.history.push('/login');

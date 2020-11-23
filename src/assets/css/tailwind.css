@@ -11,15 +11,15 @@ body {
 }
 
 .btn-dark {
-  @apply py-2 px-8 bg-blueGray-800 text-sm sm:text-xl text-center text-blueGray-300 font-semibold border-2 border-blueGray-800 rounded-2xl transition hover:bg-transparent hover:text-blueGray-800;
+  @apply py-2 px-8 bg-blueGray-800 text-sm sm:text-xl text-center text-blueGray-300 font-semibold border-2 border-blueGray-800 rounded-2xl transition hover:bg-transparent hover:text-blueGray-800 focus:outline-none focus:ring;
 }
 
 .btn-red {
-  @apply py-2 px-8 bg-red-700 text-sm sm:text-xl text-center text-blueGray-300 font-semibold border-2 border-red-700 rounded-2xl transition hover:bg-transparent hover:text-red-700;
+  @apply py-2 px-8 bg-red-700 text-sm sm:text-xl text-center text-blueGray-300 font-semibold border-2 border-red-700 rounded-2xl transition hover:bg-transparent hover:text-red-700 focus:outline-none focus:ring;
 }
 
 .btn-green {
-  @apply py-2 px-8 bg-emerald-700 text-sm sm:text-xl text-center text-blueGray-300 font-semibold border-2 border-emerald-700 rounded-2xl transition hover:bg-transparent hover:text-emerald-700;
+  @apply py-2 px-8 bg-emerald-700 text-sm sm:text-xl text-center text-blueGray-300 font-semibold border-2 border-emerald-700 rounded-2xl transition hover:bg-transparent hover:text-emerald-700 focus:outline-none focus:ring;
 }
 
 .btn-dark-sm {
@@ -27,7 +27,7 @@ body {
 }
 
 .text-title {
-  @apply mb-5 font-semibold text-lg sm:text-2xl md:text-xl text-center;
+  @apply mb-5 font-semibold text-lg md:text-xl text-center;
 }
 
 .text-error {

@@ -10,15 +10,11 @@ const DetailCandidate = (props) => {
   const { _id, username, fullName, voted } = user;
   const { candidate } = useContext(CandidateContext);
 
-  console.log(candidate);
-  console.log(user);
-
   const backHandler = () => {
     props.history.push('/vote');
   };
 
   const chooseHandler = () => {
-    console.log(candidate.number, username, fullName);
     axios
       .post('/result', {
         candidateNumber: candidate.number,
@@ -29,9 +25,11 @@ const DetailCandidate = (props) => {
       .catch((error) => console.log(error));
     axios
       .put(`/users/${_id}`)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        props.history.push('/voted');
+      })
       .catch((error) => console.log(error));
-    props.history.push('/voted');
   };
 
   return (
@@ -62,22 +60,24 @@ const DetailCandidate = (props) => {
         </div>
       </div>
       <div className="p-0 sm:py-2 sm:px-4">
-        <h1 className="text-3xl font-bold">Program Utama :</h1>
-        <p className="pl-4 text-lg font-semibold">{candidate.mainProgram}</p>
-        <h1 className="mt-4 text-2xl font-bold">Visi :</h1>
+        <h1 className="text-2xl xs:text-3xl font-bold">Program Utama :</h1>
+        <p className="pl-4 text-lg xs:text-xl font-semibold">
+          {candidate.mainProgram}
+        </p>
+        <h1 className="mt-4 text-xl xs:text-2xl font-bold">Visi :</h1>
         <ul>
           {candidate.vision &&
             candidate.vision.map((v, i) => (
-              <li className="pl-4 text-lg font-semibold" key={i}>
+              <li className="pl-4 text-base xs:text-lg font-semibold" key={i}>
                 {i + 1}. {v}
               </li>
             ))}
         </ul>
-        <h1 className="mt-4 text-2xl font-bold">Misi :</h1>
+        <h1 className="mt-4 text-xl xs:text-2xl font-bold">Misi :</h1>
         <ul>
           {candidate.mission &&
             candidate.mission.map((m, i) => (
-              <li className="pl-4 text-lg font-semibold" key={i}>
+              <li className="pl-4 text-base xs:text-lg font-semibold" key={i}>
                 {i + 1}. {m}
               </li>
             ))}

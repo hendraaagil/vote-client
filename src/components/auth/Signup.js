@@ -38,7 +38,6 @@ const Signup = (props) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         setState({
           ...state,
           errors: error.response.data.errors,

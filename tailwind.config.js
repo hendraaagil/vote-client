@@ -10,7 +10,7 @@ module.exports = {
         emerald: colors.emerald,
       },
       screens: {
-        xs: '320px',
+        xs: '475px',
       },
     },
   },

@@ -7,8 +7,7 @@ import Card from '../layouts/Card';
 import LoginButton from '../layouts/LoginButton';
 import LogoutButton from '../layouts/LogoutButton';
 
-const Home = (props) => {
-  console.log(props);
+const Home = () => {
   const [candidates, setCandidates] = useState([]);
   const { user } = useContext(AuthContext);
 
@@ -19,7 +18,6 @@ const Home = (props) => {
         setCandidates(response.data);
       })
       .catch((error) => console.log(error));
-    // eslint-disable-next-line
   }, []);
 
   return (

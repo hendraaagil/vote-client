@@ -7,7 +7,6 @@ import { CandidateContext } from '../../contexts/CandidateContext';
 const Card = (props) => {
   const { user } = useContext(AuthContext);
   const { getCandidate } = useContext(CandidateContext);
-  console.log(props);
 
   const detailHandler = (candidateId, number) => {
     axios

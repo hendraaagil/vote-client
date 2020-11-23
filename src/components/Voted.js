@@ -6,7 +6,6 @@ import LoginButton from './layouts/LoginButton';
 import LogoutButton from './layouts/LogoutButton';
 
 const Voted = (props) => {
-  console.log(props);
   const { user } = useContext(AuthContext);
 
   let content = (
