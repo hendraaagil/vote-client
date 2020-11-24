@@ -33,9 +33,9 @@ const Login = (props) => {
       .post('/login', { username: state.username, password: state.password })
       .then((response) => {
         if (response.data.user) {
-          props.history.push('/vote');
-          getUser(response.data.user);
           setState({ ...state, isDisabled: false });
+          getUser(response.data.user);
+          props.history.push('/vote');
         }
       })
       .catch((error) => {

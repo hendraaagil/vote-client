@@ -5,7 +5,7 @@ import thanks from '../assets/images/thanks.svg';
 import LoginButton from './layouts/LoginButton';
 import LogoutButton from './layouts/LogoutButton';
 
-const Voted = (props) => {
+const Voted = () => {
   const { user } = useContext(AuthContext);
 
   let content = (

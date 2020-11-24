@@ -37,8 +37,8 @@ const Signup = (props) => {
       })
       .then((response) => {
         if (response.data.user) {
-          props.history.push('/login');
           setState({ ...state, isDisabled: false });
+          props.history.push('/login');
         }
       })
       .catch((error) => {
