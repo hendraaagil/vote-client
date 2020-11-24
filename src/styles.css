@@ -680,6 +680,13 @@ body {
   border-color: rgba(30, 41, 59, var(--tw-border-opacity));
   border-radius: 1rem;
   border-width: 2px;
+}
+
+.btn-dark:disabled {
+  cursor: not-allowed;
+}
+
+.btn-dark {
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.25rem;

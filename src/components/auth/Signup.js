@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import axios from '../../axios';
 
 import Welcome from '../layouts/Welcome';
+import SmallLoader from '../layouts/SmallLoader';
 
 const Signup = (props) => {
   const [state, setState] = useState({
+    isDisabled: false,
     fullName: '',
     username: '',
     password: '',
@@ -26,6 +28,7 @@ const Signup = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setState({ ...state, isDisabled: true });
     axios
       .post('/signup', {
         fullName: state.fullName,
@@ -35,6 +38,7 @@ const Signup = (props) => {
       .then((response) => {
         if (response.data.user) {
           props.history.push('/login');
+          setState({ ...state, isDisabled: false });
         }
       })
       .catch((error) => {
@@ -93,8 +97,12 @@ const Signup = (props) => {
               <span className="text-error">{state.errors.password}</span>
             )}
           </div>
-          <button className="btn-dark" onClick={handleSubmit}>
-            Daftar
+          <button
+            className="btn-dark"
+            onClick={handleSubmit}
+            disabled={state.isDisabled}
+          >
+            {state.isDisabled ? <SmallLoader /> : 'Daftar'}
           </button>
           <p className="text-auth">
             Sudah punya akun?{' '}

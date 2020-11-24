@@ -4,10 +4,12 @@ import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 
 import Welcome from '../layouts/Welcome';
+import SmallLoader from '../layouts/SmallLoader';
 
 const Login = (props) => {
   const { getUser } = useContext(AuthContext);
   const [state, setState] = useState({
+    isDisabled: false,
     username: '',
     password: '',
     errors: {
@@ -26,12 +28,14 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setState({ ...state, isDisabled: true });
     axios
       .post('/login', { username: state.username, password: state.password })
       .then((response) => {
         if (response.data.user) {
           props.history.push('/vote');
           getUser(response.data.user);
+          setState({ ...state, isDisabled: false });
         }
       })
       .catch((error) => {
@@ -76,8 +80,12 @@ const Login = (props) => {
               <span className="text-error">{state.errors.password}</span>
             )}
           </div>
-          <button className="btn-dark" onClick={handleSubmit}>
-            Login
+          <button
+            className="btn-dark"
+            onClick={handleSubmit}
+            disabled={state.isDisabled}
+          >
+            {state.isDisabled ? <SmallLoader /> : 'Login'}
           </button>
           <p className="text-auth">
             Belum punya akun?{' '}

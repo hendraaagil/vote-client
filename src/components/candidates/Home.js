@@ -4,18 +4,22 @@ import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 
 import Card from '../layouts/Card';
+import Loader from '../layouts/Loader';
 import LoginButton from '../layouts/LoginButton';
 import LogoutButton from '../layouts/LogoutButton';
 
 const Home = () => {
   const [candidates, setCandidates] = useState([]);
+  const [isLoad, setIsLoad] = useState(false);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
+    setIsLoad(true);
     axios
       .get('/candidates')
       .then((response) => {
         setCandidates(response.data);
+        setIsLoad(false);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -30,7 +34,7 @@ const Home = () => {
       <h1 className="my-6 font-bold text-2xl sm:text-4xl text-center">
         Tentukan Pilihanmu !
       </h1>
-      <Card candidates={candidates} />
+      {isLoad ? <Loader /> : <Card candidates={candidates} />}
       <div className="flex justify-center mt-10">
         {user ? <LogoutButton /> : <LoginButton />}
       </div>
