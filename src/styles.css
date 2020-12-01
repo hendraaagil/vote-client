@@ -384,8 +384,17 @@ img {
   height: auto;
 }
 
+.border-blueGray-800 {
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 41, 59, var(--tw-border-opacity));
+}
+
 .rounded {
   border-radius: 0.25rem;
+}
+
+.border-t-8 {
+  border-top-width: 8px;
 }
 
 .flex {
@@ -506,6 +515,10 @@ img {
   margin-top: 2.5rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -520,6 +533,10 @@ img {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .p-6 {
@@ -557,6 +574,11 @@ img {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .pb-2 {
@@ -617,6 +639,10 @@ img {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .grid-cols-1 {
@@ -1031,8 +1057,16 @@ body {
     margin-right: 1rem;
   }
 
+  .sm\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
   .sm\:mb-12 {
     margin-bottom: 3rem;
+  }
+
+  .sm\:mb-20 {
+    margin-bottom: 5rem;
   }
 
   .sm\:p-16 {
@@ -1047,6 +1081,11 @@ body {
   .sm\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .sm\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .sm\:px-8 {
@@ -1090,6 +1129,11 @@ body {
 
 @media (min-width: 768px) {
 
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -1106,6 +1150,11 @@ body {
 }
 
 @media (min-width: 1024px) {
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 
   .lg\:text-3xl {
     font-size: 1.875rem;
@@ -1127,6 +1176,11 @@ body {
 }
 
 @media (min-width: 1280px) {
+
+  .xl\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 
   .xl\:text-4xl {
     font-size: 2.25rem;

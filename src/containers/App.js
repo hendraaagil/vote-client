@@ -7,6 +7,7 @@ import Login from '../components/auth/Login';
 import Home from '../components/candidates/Home';
 import DetailCandidate from '../components/candidates/DetailCandidate';
 import Voted from '../components/Voted';
+import Result from '../components/Result';
 import Footer from '../components/layouts/Footer';
 import NotFound from '../components/layouts/NotFound';
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/vote/:candidateId" component={DetailCandidate} />
         <Route path="/vote" component={Home} />
         <Route path="/voted" component={Voted} />
+        <Route path="/result" component={Result} />
         <Route path="/not-found" component={NotFound} />
         <Redirect to="/not-found" />
       </Switch>

@@ -19,7 +19,7 @@ const Card = (props) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row text-blueGray-800">
+    <div className="flex flex-col gap-8 sm:flex-row text-blueGray-800">
       {props.candidates.map((candidate) => {
         return (
           <div
