@@ -23,7 +23,7 @@ const Card = (props) => {
   };
 
   return (
-    <div className="flex flex-col gap-8 sm:flex-row text-blueGray-800">
+    <div className="flex flex-col gap-8 sm:gap-4 sm:flex-row text-blueGray-800">
       <LoadingBar color="#1E293B" progress={progress} />
       {props.candidates.map((candidate) => {
         return (

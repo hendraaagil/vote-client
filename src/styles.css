@@ -211,6 +211,7 @@ Add the correct display in Chrome and Safari.
 
 h1,
 h2,
+h3,
 p {
   margin: 0;
 }
@@ -325,7 +326,8 @@ button {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-size: inherit;
   font-weight: inherit;
 }
@@ -429,6 +431,10 @@ img {
   justify-content: space-between;
 }
 
+.font-medium {
+  font-weight: 500;
+}
+
 .font-semibold {
   font-weight: 600;
 }
@@ -519,10 +525,6 @@ img {
   margin-top: 2.5rem;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -537,10 +539,6 @@ img {
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-5 {
-  padding: 1.25rem;
 }
 
 .p-6 {
@@ -615,6 +613,11 @@ img {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-inner {
+  --tw-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 * {
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
   --tw-ring-offset-width: 0px;
@@ -631,6 +634,10 @@ img {
 .text-blueGray-800 {
   --tw-text-opacity: 1;
   color: rgba(30, 41, 59, var(--tw-text-opacity));
+}
+
+.w-1\/2 {
+  width: 50%;
 }
 
 .w-4\/5 {
@@ -1061,16 +1068,8 @@ body {
     margin-right: 1rem;
   }
 
-  .sm\:mt-10 {
-    margin-top: 2.5rem;
-  }
-
   .sm\:mb-12 {
     margin-bottom: 3rem;
-  }
-
-  .sm\:mb-20 {
-    margin-bottom: 5rem;
   }
 
   .sm\:p-16 {
@@ -1126,6 +1125,10 @@ body {
     width: 50%;
   }
 
+  .sm\:gap-4 {
+    gap: 1rem;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1141,6 +1144,10 @@ body {
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .md\:mt-6 {
+    margin-top: 1.5rem;
   }
 
   .md\:px-1 {
