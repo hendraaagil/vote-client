@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar';
 import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 import { CandidateContext } from '../../contexts/CandidateContext';
@@ -7,11 +8,14 @@ import { CandidateContext } from '../../contexts/CandidateContext';
 const Card = (props) => {
   const { user } = useContext(AuthContext);
   const { getCandidate } = useContext(CandidateContext);
+  const [progress, setProgress] = useState(0);
 
   const detailHandler = (candidateId, number) => {
+    setProgress(80);
     axios
       .get(`/candidates/${candidateId}`)
       .then((response) => {
+        setProgress(100);
         getCandidate(response.data);
         props.history.replace(`/vote/${number}`);
       })
@@ -20,6 +24,7 @@ const Card = (props) => {
 
   return (
     <div className="flex flex-col gap-8 sm:flex-row text-blueGray-800">
+      <LoadingBar color="#1E293B" progress={progress} />
       {props.candidates.map((candidate) => {
         return (
           <div

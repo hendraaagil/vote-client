@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import LoadingBar from 'react-top-loading-bar';
 import axios from '../axios';
+import { AuthContext } from '../contexts/AuthContext';
 
 import Loader from './layouts/Loader';
 import LogoutButton from './layouts/LogoutButton';
 
 const Result = () => {
+  const { user } = useContext(AuthContext);
   const [finalResult, setFinalResult] = useState({});
-  const [isLoad, setIsLoad] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setIsLoad(true);
+    setProgress(60);
     axios
       .get('/result')
       .then((response) => {
-        console.log(response.data);
-
         const reduced = response.data.reduce((acc, curr) => {
           if (!acc[curr.candidateNumber]) {
             acc[curr.candidateNumber] = 0;
@@ -31,9 +32,8 @@ const Result = () => {
             result[key] = reduced[key];
           });
 
-        console.log(result);
         setFinalResult(result);
-        setIsLoad(false);
+        setProgress(100);
       })
       .catch((error) => {
         console.log(error);
@@ -56,17 +56,18 @@ const Result = () => {
 
   return (
     <div className="flex flex-col items-center text-blueGray-800 py-4 px-8 sm:py-8">
+      <LoadingBar color="#1E293B" progress={progress} />
       <h1 className="my-6 px-4 font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center">
         Hasil voting
       </h1>
-      {isLoad ? (
+      {progress < 100 ? (
         <Loader />
       ) : (
         <div className="mt-4 mb-10 sm:mt-10 sm:mb-20 flex flex-wrap justify-center gap-8 sm:flex-row text-blueGray-800">
           {resultComponent}
         </div>
       )}
-      <LogoutButton />
+      {user && <LogoutButton />}
     </div>
   );
 };

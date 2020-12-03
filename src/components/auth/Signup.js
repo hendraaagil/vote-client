@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar';
 import axios from '../../axios';
 
 import Welcome from '../layouts/Welcome';
-import SmallLoader from '../layouts/SmallLoader';
 
 const Signup = (props) => {
+  const [progress, setProgress] = useState(0);
   const [state, setState] = useState({
     isDisabled: false,
     fullName: '',
@@ -28,6 +29,7 @@ const Signup = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setProgress(70);
     setState({ ...state, isDisabled: true });
     axios
       .post('/signup', {
@@ -40,8 +42,10 @@ const Signup = (props) => {
           setState({ ...state, isDisabled: false });
           props.history.push('/login');
         }
+        setProgress(100);
       })
       .catch((error) => {
+        setProgress(100);
         setState({
           ...state,
           errors: error.response.data.errors,
@@ -51,6 +55,7 @@ const Signup = (props) => {
 
   return (
     <div className="py-4 px-2 sm:p-16 flex flex-col items-center sm:flex-row text-blueGray-800">
+      <LoadingBar color="#1E293B" progress={progress} />
       <Welcome />
       <div className="auth-container">
         <h2 className="text-title">Silahkan daftar terlebih dahulu</h2>
@@ -102,7 +107,7 @@ const Signup = (props) => {
             onClick={handleSubmit}
             disabled={state.isDisabled}
           >
-            {state.isDisabled ? <SmallLoader /> : 'Daftar'}
+            Daftar
           </button>
           <p className="text-auth">
             Sudah punya akun?{' '}

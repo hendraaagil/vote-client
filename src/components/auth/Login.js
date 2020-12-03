@@ -1,13 +1,14 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar';
 import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 
 import Welcome from '../layouts/Welcome';
-import SmallLoader from '../layouts/SmallLoader';
 
 const Login = (props) => {
   const { getUser } = useContext(AuthContext);
+  const [progress, setProgress] = useState(0);
   const [state, setState] = useState({
     isDisabled: false,
     username: '',
@@ -28,6 +29,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setProgress(70);
     setState({ ...state, isDisabled: true });
     axios
       .post('/login', { username: state.username, password: state.password })
@@ -37,8 +39,10 @@ const Login = (props) => {
           getUser(response.data.user);
           props.history.push('/vote');
         }
+        setProgress(100);
       })
       .catch((error) => {
+        setProgress(100);
         setState({
           ...state,
           errors: error.response.data.errors,
@@ -48,6 +52,7 @@ const Login = (props) => {
 
   return (
     <div className="py-4 px-2 sm:p-16 p-16 flex flex-col items-center sm:flex-row text-blueGray-800">
+      <LoadingBar color="#1E293B" progress={progress} />
       <Welcome />
       <div className="auth-container">
         <h2 className="text-title">Silahkan login terlebih dahulu</h2>
@@ -85,7 +90,7 @@ const Login = (props) => {
             onClick={handleSubmit}
             disabled={state.isDisabled}
           >
-            {state.isDisabled ? <SmallLoader /> : 'Login'}
+            Login
           </button>
           <p className="text-auth">
             Belum punya akun?{' '}

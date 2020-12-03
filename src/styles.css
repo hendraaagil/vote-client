@@ -167,6 +167,10 @@ Remove the padding so developers are not caught out when they zero out 'fieldset
 Add the correct vertical alignment in Chrome and Firefox.
 */
 
+progress {
+  vertical-align: baseline;
+}
+
 /**
 Correct the cursor style of increment and decrement buttons in Safari.
 */

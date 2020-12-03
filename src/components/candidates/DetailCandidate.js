@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
+import LoadingBar from 'react-top-loading-bar';
 import axios from '../../axios';
 import { AuthContext } from '../../contexts/AuthContext';
 import { CandidateContext } from '../../contexts/CandidateContext';
@@ -9,24 +10,26 @@ const DetailCandidate = (props) => {
   const { user } = useContext(AuthContext);
   const { _id, username, fullName, voted } = user;
   const { candidate } = useContext(CandidateContext);
+  const [progress, setProgress] = useState(0);
 
   const backHandler = () => {
     props.history.push('/vote');
   };
 
   const chooseHandler = () => {
+    setProgress(70);
     axios
       .post('/result', {
         candidateNumber: candidate.number,
         username,
         fullName,
       })
-      .then((response) => console.log(response))
+      .then(() => setProgress(90))
       .catch((error) => console.log(error));
     axios
       .put(`/users/${_id}`)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        setProgress(100);
         props.history.push('/voted');
       })
       .catch((error) => console.log(error));
@@ -34,6 +37,7 @@ const DetailCandidate = (props) => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 sm:pt-10 sm:pb-6 sm:px-10 text-blueGray-800">
+      <LoadingBar color="#1E293B" progress={progress} />
       <div className="col-span-1">
         <img
           className="w-full rounded shadow-lg"
