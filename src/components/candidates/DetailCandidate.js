@@ -7,7 +7,7 @@ import { CandidateContext } from '../../contexts/CandidateContext';
 import LogoutButton from '../layouts/LogoutButton';
 
 const DetailCandidate = (props) => {
-  const { user } = useContext(AuthContext);
+  const { user, getUser } = useContext(AuthContext);
   const { _id, username, fullName, voted } = user;
   const { candidate } = useContext(CandidateContext);
   const [progress, setProgress] = useState(0);
@@ -30,6 +30,7 @@ const DetailCandidate = (props) => {
       .put(`/users/${_id}`)
       .then(() => {
         setProgress(100);
+        getUser(_id);
         props.history.push('/voted');
       })
       .catch((error) => console.log(error));
